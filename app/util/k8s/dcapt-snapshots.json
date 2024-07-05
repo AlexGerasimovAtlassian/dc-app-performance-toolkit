@@ -391,7 +391,7 @@
         ]
       },
       {
-        "version": "8.19.4",
+        "version": "9.0.0-eap09",
         "data": [
           {
             "type": "ebs",
