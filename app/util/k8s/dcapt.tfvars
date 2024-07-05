@@ -11,13 +11,13 @@
 # This value can not be altered after the configuration has been applied.
 # Only lowercase letters, numbers, dashes, and dots are allowed.
 # ! REQUIRED !
-environment_name = "dcapt-product"
+environment_name = "dcapt-bitbucket-large"
 
 # Supported products: jira, confluence, bitbucket, crowd and bamboo.
 # For JSM set product as jira.
 # e.g.: products = ["jira"]
 # ! REQUIRED !
-products = ["product-to-deploy"]
+products = ["bitbucket"]
 
 # License
 # To avoid storing license in a plain text file, we recommend storing it in an environment variable prefixed with `TF_VAR_` (i.e. `TF_VAR_jira_license`) and keep the below line commented out
@@ -26,7 +26,7 @@ products = ["product-to-deploy"]
 # ! REQUIRED !
 jira_license = "jira-license"
 confluence_license = "confluence-license"
-bitbucket_license = "bitbucket-license"
+bitbucket_license = "AAABqw0ODAoPeNp1kV9vmzAUxd/5FFfaWyQTYKu2RELaAl5brYUoQLd124Njboo3YiPbpMu3nwtk/6pI9ouP772/c+6LgllIkUO0gCBcXkTLlxFc3pYQBeEbL+v3W9T5rjKoTUxCL1HSMm4ztse47pjWwjRvmW2ZMYJJn6u9ZywzjX8jOEqD5bHD4XNK7+hNvqab5/pf2rrXvGEGU2YxdgQLEoTueOe7TQr92Ql9HMrWr6Pg6gRKb5loz5EWqA+or9N4dbkoyafq7hX5cH9/RVZB+HHCdB1ZgtKijq3u0Sv6reFadFYoOb7MZrMsL8n7fEPWmzytkvI6z0hVUCfEiUaHVMP2CLZBmGCBSq5q1NBp9R25hS+Ntd3X5Xz+oPx/EOftWEFwrPjmQ6pAKgu1MFaLbW/RdRYGrALeG6v2blG+51w7Zskkf57MaMxlIw7420Kyoe9KmpLV5yfsM3lN+C6wSv6Q6lF6Bc1id8lFEHi5fmBSGDZEk+IBW9U5jyUaezLuDXk4/f/9pvgn1aFg8g07peFpBzAuAVjXQX3qbTx6YG0/Ttyx1g34BRr79X4wLQIUMBg0UpHr5lLfLQOcOK5TDa4yDBECFQCRB3FHCrVaiTKVXH6xQRXZO+WeAA==X02kk"
 crowd_license = "crowd-license"
 bamboo_license = "bamboo-license"
 
@@ -247,7 +247,7 @@ confluence_additional_jvm_args = ["-Dupm.plugin.upload.enabled=true"]
 ################################################################################
 
 # Supported versions by DCAPT: https://github.com/atlassian/dc-app-performance-toolkit#supported-versions
-bitbucket_version_tag = "8.9.14"
+bitbucket_version_tag = "9.0.0-eap09"
 
 # Dataset size. Used only when snapshots_json_file_path is defined. Defaults to large
 bitbucket_dataset_size = "large"
