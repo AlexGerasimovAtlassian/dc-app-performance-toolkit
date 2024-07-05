@@ -28,10 +28,10 @@ services:
       - python util/pre_run/environment_checker.py
       - python util/pre_run/environment_compliance_check.py bitbucket
       - python util/pre_run/git_client_check.py
-      - python util/data_preparation/bitbucket_prepare_data.py
+#      - python util/data_preparation/bitbucket_prepare_data.py
     shutdown:
       - python util/post_run/jmeter_post_check.py
-      - python util/jtl_convertor/jtls-to-csv.py kpi.jtl selenium.jtl
+      - python util/jtl_convertor/jtls-to-csv.py kpi.jtl # selenium.jtl
     post-process:
       - python util/analytics/analytics.py bitbucket
       - python util/post_run/cleanup_results_dir.py
@@ -43,13 +43,13 @@ execution:
     concurrency: ${concurrency}
     hold-for: ${test_duration}
     ramp-up: ${ramp-up}
-  - scenario: selenium
-    executor: selenium
-    runner: pytest
-    hold-for: ${test_duration}
+#  - scenario: selenium
+#    executor: selenium
+#    runner: pytest
+#    hold-for: ${test_duration}
 scenarios:
-  selenium:
-    script: selenium_ui/bitbucket_ui.py
+#  selenium:
+#    script: selenium_ui/bitbucket_ui.py
   jmeter:
     script: jmeter/bitbucket.jmx
     properties:
@@ -84,9 +84,9 @@ modules:
       server.rmi.ssl.disable: true
       java.rmi.server.hostname: localhost
       httpsampler.ignore_failed_embedded_resources: "true"
-  selenium:
-    chromedriver:
-      version: "126.0.6478.126" # Supports Chrome version 126. You can refer to https://googlechromelabs.github.io/chrome-for-testing
+#  selenium:
+#    chromedriver:
+#      version: "126.0.6478.126" # Supports Chrome version 126. You can refer to https://googlechromelabs.github.io/chrome-for-testing
 reporting:
 - data-source: sample-labels
   module: junit-xml
