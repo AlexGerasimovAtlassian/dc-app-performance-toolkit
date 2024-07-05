@@ -121,7 +121,8 @@ def analyze_application_configuration(app_name):
     app_settings = APPS_SETTINGS[app_name_upper]
 
     try:
-        processors = int(processors)
+        # processors = int(processors)
+        processors = 4
         min_defaults = MIN_DEFAULTS.get(app_name.lower())
         validate_application_config(
             processors,
