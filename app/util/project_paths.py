@@ -40,7 +40,7 @@ def __get_bitbucket_yml():
 
 
 def __get_bitbucket_datasets():
-    return __get_datasets() / "bitbucket"
+    return __get_datasets() / "bitbucket/examples"
 
 
 def __get_crowd_yml():
