@@ -182,3 +182,9 @@ class BambooClient(RestClient):
         if bamboo_system_info_html.count(html_pattern):
             return 'terraform'
         return 'other'
+
+    def hit_lighthouse_endpoint(self):
+        request = self.get(f'{self.host}/rest/lighthouse/1.0/alerts/create',
+                           error_msg="Can not access Lighthouse endpoint")
+        content = request.text
+        return content

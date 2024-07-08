@@ -136,6 +136,9 @@ class Bitbucket(BaseApplication):
     def dataset_information(self):
         return f'{self.client.get_bitbucket_repo_count()} repositories'
 
+    def hit_lighthouse_endpoint(self):
+        return self.client.hit_lighthouse_endpoint()
+
 
 class Jsm(BaseApplication):
     type = JSM
