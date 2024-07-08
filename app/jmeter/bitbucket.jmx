@@ -357,7 +357,7 @@ else{
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="hit_lighthouse_endpoint" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Hit Lighthouse Endpoint" enabled="true">
+              <!--elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Hit Lighthouse Endpoint" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="j_username" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
@@ -374,13 +374,13 @@ else{
                     <stringProp name="Argument.name">j_password</stringProp>
                   </elementProp>
                 </collectionProp>
-              </elementProp>
+              </elementProp-->
               <stringProp name="HTTPSampler.domain"></stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
               <stringProp name="HTTPSampler.path">${application.postfix}/rest/lighthouse/1.0/alerts/create</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
