@@ -41,7 +41,7 @@
           </elementProp>
           <elementProp name="application.ssh_hostname" elementType="Argument">
             <stringProp name="Argument.name">application.ssh_hostname</stringProp>
-            <stringProp name="Argument.value">${__P(application_hostname, test_bitbucket_instance.atlassian.com)}</stringProp>
+            <stringProp name="Argument.value">${__P(ssh_hostname, test_bitbucket_instance.atlassian.com)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="tmp.dir" elementType="Argument">
