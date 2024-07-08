@@ -9,13 +9,14 @@ settings:
     application_protocol: https         # http or https
     application_port: 443               # 80, 443, 8080, 7990 etc
     secure: True                       # Set False to allow insecure connections, e.g. when using self-signed SSL certificate
+    ssh_hostname: instenv-320040-vqjc-alt-4e6d1a9c604edeb9.elb.ap-southeast-2.amazonaws.com
     application_postfix:     # e.g. /bitbucket for TerraForm deployment url like `http://a1234-54321.us-east-2.elb.amazonaws.com/bitbucket`. Leave this value blank for url without postfix.
     admin_login: admin
     admin_password: i2fhvn.h8NOstjtTXUHLQlrX
     load_executor: jmeter              # only jmeter executor is supported
     concurrency: 20                    # number of concurrent virtual users for jmeter scenario
-    test_duration: 50m
-    ramp-up: 10m                       # time to spin all concurrent users
+    test_duration: 2m
+    ramp-up: 1m                       # time to spin all concurrent users - all users are there already
     total_actions_per_hour: 54500
     WEBDRIVER_VISIBLE: False
     JMETER_VERSION: 5.6
@@ -61,6 +62,7 @@ scenarios:
       application_postfix: ${application_postfix}
       total_actions_per_hr: ${total_actions_per_hour}
       tmp_dir: /tmp
+      ssh_hostname: ${ssh_hostname}
       ssh_key_url: https://centaurus-datasets.s3.us-east-2.amazonaws.com/bitbucket/ssh/id_rsa
 modules:
   consolidator:
