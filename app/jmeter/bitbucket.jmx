@@ -186,7 +186,7 @@ import org.apache.commons.io.FileUtils;
  	String privateSshKeyLocation = (gitTmpWorkspace + &quot;/bitbucket_ssh/id_rsa&quot;).replace(&quot;\\&quot;, &quot;/&quot;);
  	props.put(&quot;PRIVATE_SSH_KEY_LOCATION&quot;, privateSshKeyLocation);
      log.info(&quot;SSH keys are stored in &quot; + privateSshKeyLocation);
-     props.put(&quot;GIT_SSH_COMMAND&quot;, &quot;ssh -i &quot; + privateSshKeyLocation + &quot; -o \&quot;StrictHostKeyChecking=no\&quot;&quot;);     
+     props.put(&quot;GIT_SSH_COMMAND&quot;, &quot;ssh -i &quot; + privateSshKeyLocation + &quot; -o \&quot;StrictHostKeyChecking=no\&quot;&quot;);
 } catch (Exception e) {
 	log.error(&quot;Error while copying ssh keys&quot;, e);
 	ctx.getEngine().askThreadsToStop();
@@ -237,7 +237,7 @@ String datasetsDir =  Paths.get(baseDir)
 					.toAbsolutePath()
 					.toString()
 					.replace(&quot;\\&quot;, &quot;/&quot;);
-					
+
 props.put(&quot;DATASETS_DIR&quot;, datasetsDir);</stringProp>
           </JSR223PreProcessor>
           <hashTree/>
@@ -300,7 +300,7 @@ log.info(&quot;GIT_LOG_DIR: &quot; + gitLogDir);
 if(!prev.isSuccessful()){
 	log.error(&quot;Error occured in Thread name::&quot; + prev.getThreadName() + &quot;::Sampler name::&quot; + prev.getSampleLabel() + &quot;::&quot; + prev.getResponseMessage() + &quot;::&quot; + prev.getResponseDataAsString())
 	ctx.getEngine().askThreadsToStop();
-}	
+}
 else{
 	prev.setIgnore()
 }
@@ -356,6 +356,51 @@ else{
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="hit_lighthouse_endpoint" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Hit Lighthouse Endpoint" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="j_username" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">${admin_login}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">j_username</stringProp>
+                  </elementProp>
+                  <elementProp name="j_password" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">${admin_password}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">j_password</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">${application.postfix}/rest/lighthouse/1.0/alerts/create</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49588">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">1</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get_all_ssh_keys_from_bitbucket" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -401,7 +446,7 @@ vars.put(&quot;SERVER_SSH_KEYS&quot;, result.join(&quot;::&quot;));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">import java.io.File; 
+            <stringProp name="script">import java.io.File;
 vars.put(&quot;USER_SSH_KEY&quot;, new File(&apos;${__P(PRIVATE_SSH_KEY_LOCATION)}.pub&apos;).getText(&apos;UTF-8&apos;).trim());
 </stringProp>
           </JSR223Sampler>
@@ -503,7 +548,7 @@ vars.put(&quot;USER_SSH_KEY&quot;, new File(&apos;${__P(PRIVATE_SSH_KEY_LOCATION
 if(!prev.isSuccessful()){
 	log.error(&quot;Error occured in Thread name::&quot; + prev.getThreadName() + &quot;::Sampler name::&quot; + prev.getSampleLabel() + &quot;::&quot; + prev.getResponseMessage() + &quot;::&quot; + prev.getResponseDataAsString())
 	ctx.getEngine().askThreadsToStop();
-}	
+}
 else{
 	prev.setIgnore()
 }
@@ -576,7 +621,7 @@ def gitProtocolSshPercentage = Integer.valueOf(&quot;${GIT_PROTOCOL_SSH_PERCENTA
 def randomNum = java.util.concurrent.ThreadLocalRandom.current().nextInt(0, 100)
 if (randomNum &lt;= gitProtocolSshPercentage) {
 	vars.put(&quot;GIT_PROTOCOL&quot;, &quot;ssh&quot;)
-	vars.put(&quot;REPO_URL&quot;, &quot;ssh://git@${application.ssh_hostname}:${application.ssh_port}/&quot; + projectKey + &quot;/&quot; + repoSlug + &quot;.git&quot;) 
+	vars.put(&quot;REPO_URL&quot;, &quot;ssh://git@${application.ssh_hostname}:${application.ssh_port}/&quot; + projectKey + &quot;/&quot; + repoSlug + &quot;.git&quot;)
 } else {
 	vars.put(&quot;GIT_PROTOCOL&quot;, &quot;http&quot;)
 	vars.put(&quot;REPO_URL&quot;, &quot;${application.protocol}://&quot; + username + &quot;:&quot; + password + &quot;@${application.hostname}:${application.port}${application.postfix}/scm/&quot; + projectKey + &quot;/&quot; + repoSlug + &quot;.git&quot;)
@@ -691,13 +736,13 @@ import java.util.UUID;
  	                              .toAbsolutePath()
  	                              .toString();
      log.info(&quot;Shallow copies folder: [&quot; + shallowCopiesDir +&quot;] successfully created.&quot;);
-     
+
 	File srcDir = new File(vars.get(&quot;REPO_FOLDER&quot;) + &quot;/.git&quot;);
 	String repoShallowCopyDir = shallowCopiesDir + &quot;/&quot; + vars.get(&quot;REPO_SLUG&quot;) + &quot;-&quot; + UUID.randomUUID();
 	File trgDir = new File (repoShallowCopyDir + &quot;/.git&quot;);
 	FileUtils.copyDirectory(srcDir, trgDir);
 	vars.put(&quot;REPO_SHALLOW_COPY_DIR&quot;, repoShallowCopyDir);
-	
+
 } catch (Exception e) {
 	log.error(&quot;Error while creating temporary workspace for pull&quot;, e);
 	ctx.getEngine().askThreadsToStop();
